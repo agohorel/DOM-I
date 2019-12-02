@@ -11,11 +11,14 @@ button.addEventListener("click", function() {
 
   let timer = setInterval(function() {
     let ellapsed = Date.now() - started;
+    button.disabled = true;
+
     if (ellapsed >= 10000) {
       clearTimeout(timer);
       [secondsOnes, secondsTens, msHundreds, msTens].forEach(item =>
         item.classList.add("redDigit")
       );
+      button.disabled = false;
     }
 
     secondsTens.textContent = Math.floor(ellapsed / 1000)
