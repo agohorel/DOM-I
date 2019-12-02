@@ -48,8 +48,15 @@ logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 // NAV LINKS
 const nav = document.querySelector("nav");
+const navLinks = document.querySelectorAll("nav a");
 const newLinks = ["Sign Up", "Sign In"];
 
+// set text for original links
+navLinks.forEach((link, i) => {
+  link.textContent = siteContent["nav"][`nav-item-${i + 1}`];
+});
+
+// create new links
 newLinks.forEach((link, i) => makeElement("a", link, nav, i));
 
 function makeElement(tag, text, parent, index) {
@@ -60,16 +67,10 @@ function makeElement(tag, text, parent, index) {
   index % 2 === 0 ? parent.append(el) : parent.prepend(el);
 }
 
-const navLinks = document.querySelectorAll("a");
-const navText = Object.values(siteContent.nav);
-
-navLinks.forEach((link, i) => {
-  // only grab values from siteContent within the range we're interested in
-  if (i < navText.length && i > 0) {
-    link.textContent = navText[i - 1];
-  }
-  link.style.color = "green";
-});
+// color all links (original + new links) green
+document
+  .querySelectorAll("nav a")
+  .forEach(link => (link.style.color = "green"));
 
 // HERO IMG
 document.querySelector("#cta-img").src = siteContent.cta["img-src"];
