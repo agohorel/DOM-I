@@ -4,21 +4,22 @@ const secondsOnes = document.querySelector("#secondOnes");
 const msHundreds = document.querySelector("#msHundreds");
 const msTens = document.querySelector("#msTens");
 
-const button = document.querySelector("button");
+const start = document.querySelector("#start");
+const reset = document.querySelector("#reset");
 
-button.addEventListener("click", function() {
+start.addEventListener("click", function() {
   let started = Date.now();
 
   let timer = setInterval(function() {
     let ellapsed = Date.now() - started;
-    button.disabled = true;
+    start.disabled = true;
 
     if (ellapsed >= 10000) {
       clearTimeout(timer);
       [secondsOnes, secondsTens, msHundreds, msTens].forEach(item =>
         item.classList.add("redDigit")
       );
-      button.disabled = false;
+      start.disabled = false;
     }
 
     secondsTens.textContent = Math.floor(ellapsed / 1000)
@@ -37,4 +38,11 @@ button.addEventListener("click", function() {
       .toString()
       .substring(3, 4);
   }, 10);
+});
+
+reset.addEventListener("click", function() {
+  [secondsOnes, secondsTens, msHundreds, msTens].forEach(item => {
+    item.classList.remove("redDigit");
+    item.textContent = "0";
+  });
 });
