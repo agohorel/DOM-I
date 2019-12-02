@@ -47,10 +47,29 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
 // NAV LINKS
+const nav = document.querySelector("nav");
+const newLinks = ["Sign Up", "Sign In"];
+
+newLinks.forEach((link, i) => makeElement("a", link, nav, i));
+
+function makeElement(tag, text, parent, index) {
+  const el = document.createElement(tag);
+  el.textContent = text;
+  el.href = "#";
+
+  index % 2 === 0 ? parent.append(el) : parent.prepend(el);
+}
+
 const navLinks = document.querySelectorAll("a");
 const navText = Object.values(siteContent.nav);
 
-navLinks.forEach((link, i) => (link.textContent = navText[i]));
+navLinks.forEach((link, i) => {
+  // only grab values from siteContent within the range we're interested in
+  if (i < navText.length && i > 0) {
+    link.textContent = navText[i - 1];
+  }
+  link.style.color = "green";
+});
 
 // HERO IMG
 document.querySelector("#cta-img").src = siteContent.cta["img-src"];
