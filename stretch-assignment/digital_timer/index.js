@@ -7,10 +7,12 @@ const msTens = document.querySelector("#msTens");
 const start = document.querySelector("#start");
 const reset = document.querySelector("#reset");
 
+let timer;
+
 start.addEventListener("click", function() {
   let started = Date.now();
 
-  let timer = setInterval(function() {
+  timer = setInterval(function() {
     let ellapsed = Date.now() - started;
     start.disabled = true;
 
@@ -45,4 +47,6 @@ reset.addEventListener("click", function() {
     item.classList.remove("redDigit");
     item.textContent = "0";
   });
+  clearTimeout(timer);
+  start.disabled = false;
 });
