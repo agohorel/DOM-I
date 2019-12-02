@@ -135,13 +135,23 @@ document.querySelector("footer").children[0].textContent =
   siteContent.footer.copyright;
 
 // STRETCH
+// apply transition to everything we're going to dark-mode-ify
+const everything = document.querySelectorAll(
+  "h1, h2, h3, h4, h5, h6, p, body, #logo-img"
+);
+everything.forEach(elt => (elt.style.transition = ".2s ease-out all"));
+// flag to track state of dark mode
 let isDarkMode = false;
+// create the button for toggling dark mode
 makeElement("button", "dark mode", nav);
 
+// dark mode button styling
 const btn = document.querySelector("button");
 btn.style.backgroundColor = "grey";
 btn.style.border = "none";
+btn.style.borderRadius = "3px";
 
+// click listener
 btn.addEventListener("click", darkMode);
 
 function darkMode() {
