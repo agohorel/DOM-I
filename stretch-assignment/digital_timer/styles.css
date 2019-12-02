@@ -4,6 +4,12 @@ body {
   align-items: center;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .digit {
   display: inline-block;
   font-size: 80px;
