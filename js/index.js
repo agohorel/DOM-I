@@ -132,3 +132,31 @@ contact.querySelectorAll("p").forEach((item, i) => {
 // FOOTER
 document.querySelector("footer").children[0].textContent =
   siteContent.footer.copyright;
+
+// STRETCH
+let isDarkMode = false;
+makeElement("button", "dark mode", nav);
+
+const btn = document.querySelector("button");
+btn.style.backgroundColor = "grey";
+btn.style.border = "none";
+
+btn.addEventListener("click", darkMode);
+
+function darkMode() {
+  const text = document.querySelectorAll("h1, h2, h3, h4, h5, h6, p");
+  const background = document.querySelector("body");
+  const logo = document.querySelector("#logo-img");
+
+  isDarkMode = !isDarkMode;
+
+  if (isDarkMode) {
+    text.forEach(item => (item.style.color = "white"));
+    background.style.backgroundColor = "#1e1f1e";
+    logo.style.filter = "invert(100%)";
+  } else {
+    text.forEach(item => (item.style.color = "black"));
+    background.style.backgroundColor = "white";
+    logo.style.filter = "invert(0%)";
+  }
+}
