@@ -1,14 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono&display=swap");
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #1c1c1c;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "IBM Plex Mono", monospace;
+  min-width: 28vw;
 }
 
 .digit {
   display: inline-block;
   font-size: 80px;
+  color: white;
 }
 
 .redDigit {
   color: red;
+}
+
+button {
+  font-family: "IBM Plex Mono", monospace;
+  color: white;
+  font-size: 24px;
+  border: none;
+  padding: 10px 100px;
+  margin-bottom: 20px;
+  background-color: #3c3c3c;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #7c7c7c;
+  color: black;
+}
+
+button:disabled {
+  color: black;
+  opacity: .5;
+  cursor: wait;
 }
